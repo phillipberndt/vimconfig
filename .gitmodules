@@ -1,0 +1,18 @@
+[submodule "pathogen"]
+	path = pathogen
+	url = https://github.com/tpope/vim-pathogen/
+[submodule "bundle/drupal-snippets"]
+	path = bundle/drupal-snippets
+	url = https://github.com/theunraveler/Drupal-Snippets-for-Vim.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/UltiSnips"]
+	path = bundle/UltiSnips
+	url = git://github.com/rygwdn/ultisnips.git
+[submodule "bundle/vim-skeleton"]
+	path = bundle/vim-skeleton
+	url = https://github.com/kana/vim-skeleton
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git

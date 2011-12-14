@@ -1,0 +1,68 @@
+clearsnippets r
+
+# Opening
+snippet head "Article" b
+\documentclass[a4paper,10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[ngerman]{babel}
+\usepackage{geometry}
+\geometry{a4paper,left=2.0cm, right=2.0cm, includeheadfoot, top=1.5cm,bottom=2.0cm}
+
+\newtheorem{thm}{Satz}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\lin}{lin}
+\DeclareMathOperator{\ran}{ran}
+\newcommand{\spd}[2]{\left\langle#1, #2\right\rangle}
+\DeclareMathOperator{\C}{\mathbb{C}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\N}{\mathbb{N}}
+
+\begin{document}
+\title{${1}}
+\subject{${2}}
+\date{}
+\maketitle
+${3}
+\end{document}
+endsnippet
+
+snippet chap "Chapter" !
+\chapter{${1:title}}
+${2}
+endsnippet
+# Sections
+snippet sec "Section" !
+\section{${1:title}}
+${2}
+endsnippet
+snippet sub "Subsection" !
+\subsection{${1:title}}
+${2}
+endsnippet
+snippet ssub "Subsubsection" !
+\subsubsection{${1:title}}
+${2}
+endsnippet
+
+# List stuff
+snippet it "Item" !
+\item ${1}
+endsnippet
+snippet itd "Definition item"
+\item[${1}] ${2}
+endsnippet
+
+# Alignment
+snippet ali "Align"
+\begin{align${1:*}}
+	${0}
+\end{align$1}
+endsnippet
+
+snippet em "Emphazise"
+{\em ${1}} ${0}
+endsnippet

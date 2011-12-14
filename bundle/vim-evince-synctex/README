@@ -1,0 +1,22 @@
+This script integrates synctex with Evince and GVIM.
+
+It is a meshup between
+ * tex_pdf.vim by Jeet Sukumaran
+ * jlebl's version of evince_vim_dbus.py
+with some minor additions by myself.
+
+Howto:
+ Copy this into your ~/.vim directory, or a subdirectory of bundle/ if you use
+ pathogen. You'll have to add
+  \synctex=1
+ to your TeX-files or use the appropriate parameter for your TeX-Compiler.
+
+ Afterwards, use <F9> to compile your TeX-files directly from vim and <S-F9> to
+ additionaly open Evince automatically. If you type ls in normal mode, Evince will jump
+ to that line.
+
+ No improvements so far, that's the functionality offered by both scripts. My changes are:
+
+  * If you compile using <S-F9> the helper script gets started automatically, so if you
+    Control-Click onto a point in evince the cursor will jump to that line in VIM.
+  * I changed the helper script such that it will end automatically when you close Evince
