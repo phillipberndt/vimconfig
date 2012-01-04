@@ -1,3 +1,38 @@
 snippet imp "Import" 
 import ${0}
 endsnippet
+
+snippet "" "Docstring"
+"""
+	${1}
+"""
+${0}
+endsnippet
+
+snippet setup "Setuptools initialization"
+import os
+from setuptools import setup
+
+def read(fname):
+    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
+setup(
+    name = "${1:an_example_pypi_project}",
+    version = "${2:0.0.1}",
+    author = "`cat ~/.vim/vim-personal | grep name | cut -d= -f2`",
+    author_email = "`cat ~/.vim/vim-personal | grep email_coding | cut -d= -f2`",
+    description = ("${3:Description}"),
+    license = "GPL",
+    keywords = "${4:Keywords}",
+    url = "${5:URL}",
+    packages = [ ${6:Packages} ],
+    long_description = read('README'),
+    classifiers=[
+		${7:
+        "Development Status :: 3 - Alpha",
+        "Topic :: Utilities",
+        "License :: OSI Approved :: BSD License",
+		}
+    ],
+)
+endsnippet

@@ -30,6 +30,75 @@ ${3}
 \end{document}
 endsnippet
 
+snippet head "Letter" b
+\documentclass[
+   pagenumber=headright,
+   headsepline=on,
+   parskip=half,
+   fromalign=right,
+   fromphone=on,
+   fromemail=on,
+   addrfield=on,
+   backaddress=on,
+   subject=beforeopening,
+   locfield=narrow,
+   foldmarks=on
+]{scrlttr2}
+\usepackage{ngerman}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\setkomafont{fromname}{\sffamily}
+\setkomafont{fromaddress}{\sffamily}
+\setkomafont{pagenumber}{\sffamily}
+\setkomafont{subject}{\mdseries}
+\setkomafont{backaddress}{\mdseries}
+\usepackage{mathptmx}
+
+\begin{document}
+
+\LoadLetterOption{DIN}
+\makeatletter
+\@setplength{firstheadvpos}{20mm}
+\@setplength{firstheadwidth}{\paperwidth}
+\ifdim \useplength{toaddrhpos}>\z@
+  \@addtoplength[-2]{firstheadwidth}{\useplength{toaddrhpos}}
+\else
+  \@addtoplength[2]{firstheadwidth}{\useplength{toaddrhpos}}
+\fi
+\@setplength{foldmarkhpos}{6.5mm}
+\makeatother
+
+\setkomavar{fromname}{`cat ~/.vim/vim-personal | grep name | cut -d= -f2`}
+\setkomavar{fromaddress}{`cat ~/.vim/vim-personal | grep street | cut -d= -f2` \\\\ `cat ~/.vim/vim-personal | grep zip | cut -d= -f2` `cat ~/.vim/vim-personal | grep city | cut -d= -f2`}
+\setkomavar{fromphone}{`cat ~/.vim/vim-personal | grep phone | cut -d= -f2`}
+\renewcommand{\phonename}{Telefon}
+\setkomavar{fromemail}{mail@pberndt.com}
+\setkomavar{backaddressseparator}{, }
+\setkomavar{signature}{(`cat ~/.vim/vim-personal | grep name | cut -d= -f2`)}
+%\setkomavar{frombank}{}
+%\firsthead{Frei gestalteter Briefkopf}
+%\firstfoot{Fußzeile}
+\renewcommand{\enclname}{Anlage}
+\setkomavar{enclseparator}{: }
+\pagestyle{plain}
+
+\begin{letter}{
+	${1:Recipient}
+}
+\setkomavar{subject}{${2:Subject}}
+\opening{${3:Sehr geehrte Damen und Herren,}}
+
+$0
+
+\closing{Mit freundlichen Grüßen,}
+%\ps{PS:}
+%\encl{}
+%\cc{}
+\end{letter}
+\end{document}
+endsnippet
+
 snippet chap "Chapter" !
 \chapter{${1:title}}
 ${2}
