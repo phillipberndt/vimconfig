@@ -1,0 +1,63 @@
+snippet article "article"
+@Article{ ${1:id},
+	author = {${2:authors separated by "and"}},
+	title = {${3:title}},
+	journal = {${4:journal}},
+	year = ${5:year},
+}
+endsnippet
+
+snippet booklet "booklet"
+@Booklet{ ${1:id},
+	title = {${2:title}},
+	author = {${3:authors separated by "and"}},
+}
+endsnippet
+
+snippet inbook "inbook"
+@InBook{ ${1:id},
+	${2:author/editor} = {${3:$2s separated by "and"}},
+	title = {${4:title}},
+	${5:chapter/pages} = {${6:$5}},
+	publisher = {${7:publisher}},
+	year = ${8:year},
+}
+endsnippet
+
+snippet inproceedings "inproceedings"
+@InProceedings{ ${1:id},
+	author = {${2:authors separated by "and"}},
+	title = {${3:title}},
+	booktitle = {${4:book title}},
+	year = ${5:year},
+}
+endsnippet
+
+snippet masters "masters"
+@MastersThesis{ ${1:id},
+	author = {${2:authors separated by "and"}},
+	title = {${3:title}},
+	school = {${4:school}},
+	year = ${5:year},
+}
+endsnippet
+
+snippet phd "phd"
+@PhDThesis{ ${1:id},
+	author = {${2:authors separated by "and"}},
+	title = {${3:title}},
+	school = {${4:school}},
+	year = ${5:year},
+}
+endsnippet
+
+snippet techreport "techreport"
+@TechReport{ ${1:id},
+	author = {${2:authors separated by "and"}},
+	title = {${3:title}},
+	institution = {${4:institution}},
+	year = ${5:year},
+}
+endsnippet
+
+
