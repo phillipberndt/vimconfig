@@ -7,6 +7,16 @@ snippet article "article"
 }
 endsnippet
 
+snippet book "book"
+@Book{ ${1:id},
+	title = {${2:title}},
+	author = {${3:authors separated by "and"}},
+	publisher = {${4:publisher}},
+	year = {${5:year}},
+	isbn = {${6:isbn}},
+}
+endsnippet
+
 snippet booklet "booklet"
 @Booklet{ ${1:id},
 	title = {${2:title}},
@@ -60,4 +70,11 @@ snippet techreport "techreport"
 }
 endsnippet
 
-
+snippet url "url"
+@OTHER{ ${1:id},
+	author = {${2:authors separated by "and"}},
+	title = {${3:title}},
+	year = ${5:year},
+	url = ${6:url},
+}
+endsnippet
