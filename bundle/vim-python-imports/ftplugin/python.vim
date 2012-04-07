@@ -13,11 +13,12 @@
 " which adds an arbitrary line (should start with import or from) at the
 " imports section at the top of the file.
 "
+" If you want automatic imports for common modules, define
+"  let g:PythonAutoAddImports = 1
+" to your vimrc.
+"
 " Ideas for improvement:
 "  * Somehow handle from .. import .. statements
-"  * Perhaps do this automatically when a dot is entered?!
-"    But this would require a check whether the word before
-"    the dot is a module or a class/object
 "  * Recognize strings at the top of the file and insert
 "    imports below. Currently, only hash'ed comments are
 "    recognized to cope with the shebang and encoding comment
@@ -92,6 +93,33 @@ function <SID>PythonInsert()
 	call g:PythonAddImport("import " . l:import)
 endfunction
 
+" Register normal insert hook
 imap <C-f> <C-O>:call <SID>PythonInsert()<CR>
+
+if exists("g:PythonAutoAddImports") && g:PythonAutoAddImports == 1
+	" Get a list of available Python modules
+python <<END
+import sys
+import os
+import vim
+vim.command("let s:PythonModules = " + 
+	repr([ y[:-3] for x in filter(os.path.isdir, sys.path) for y in os.listdir(x) if y[-3:] == ".py" ] +
+		[ "sys", "gtk" ]
+	))
+END
+
+	" Hook for dynamic imports
+	function <SID>DynamicPythonInsert()
+		let l:import = substitute(expand("<cWORD>"), "\\.[^\.]*$", "", "")
+		if l:import == ""
+			return
+		endif
+		if index(s:PythonModules, l:import) == -1
+			return
+		end
+		call g:PythonAddImport("import " . l:import)
+	endfunction
+	imap . <C-V>.<C-O>:call <SID>DynamicPythonInsert()<CR>
+end
 
 endif
