@@ -1,8 +1,10 @@
 " Python import management
 " Vim plugin
 "
+" Version: 0.1
+" Licence: VIM licence
+"
 " Copyright (c) 2012, Phillip Berndt
-" Use as you wish under the VIM license
 "
 " Maps a function to <C-f> in insert mode which automatically adds import
 " statements if needed. Simply position the cursor over a module name and the
