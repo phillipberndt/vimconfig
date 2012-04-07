@@ -4,7 +4,7 @@
 " Copyright (c) 2012, Phillip Berndt
 " Use as you wish under the VIM license
 "
-" Maps a function to <C-m> in insert mode which automatically adds import
+" Maps a function to <C-f> in insert mode which automatically adds import
 " statements if needed. Simply position the cursor over a module name and the
 " import will be added. If there is no word under the cursor the user will be
 " asked to enter a module name.
@@ -31,7 +31,7 @@ function g:PythonAddImport(import)
 
 	" First check if this already gets imported
 	call cursor(1, 1)
-	if search("^\[ \t\]*" . a:import, "cn") != 0
+	if search("^\[ \t\]*" . a:import . "\[ \t\]*$", "cn") != 0
 		call setpos(".", l:oldpos)
 		return
 	end
@@ -82,7 +82,7 @@ function g:PythonAddImport(import)
 endfunction
 
 function <SID>PythonInsert()
-	let l:import = expand("<cword>")
+	let l:import = substitute(expand("<cWORD>"), "\\.[^\.]*$", "", "")
 	if l:import == ""
 		let l:import = input("Module to import: ")
 		if l:import == ""
