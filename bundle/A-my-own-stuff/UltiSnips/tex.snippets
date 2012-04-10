@@ -133,5 +133,13 @@ snippet ali "Align"
 endsnippet
 
 snippet em "Emphazise"
-{\em ${1}} ${0}
+\emph{${1}} ${0}
+endsnippet
+
+snippet lbl "Label"
+\label{${1}}${0}
+endsnippet
+
+snippet lin "Inline listing"
+\lstinline[language=${1}]|${2}|$0
 endsnippet
