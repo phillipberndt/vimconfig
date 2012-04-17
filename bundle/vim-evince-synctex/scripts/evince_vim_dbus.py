@@ -122,7 +122,7 @@ class EvinceWindowProxy:
         if self.close_handler:
             self.close_handler()
 
-    def on_sync_source(self, input_file, source_link):
+    def on_sync_source(self, input_file, source_link, other):
         if self.source_handler is not None:
             self.source_handler(input_file, source_link)
 
