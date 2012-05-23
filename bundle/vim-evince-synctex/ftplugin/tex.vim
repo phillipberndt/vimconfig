@@ -149,6 +149,7 @@ let b:tex_pdf_mapped = 1
 " Define commands.
 command! -buffer -nargs=* BuildTexPdf call s:BuildTexPdf(0, <f-args>)
 command! -buffer -nargs=* BuildAndViewTexPdf call s:BuildTexPdf(1, <f-args>)
+command! -buffer ViewTexPdf call s:ViewTexPdf()
 
 " Map keys.
 if !exists("g:tex_pdf_map_keys") || g:tex_pdf_map_keys
@@ -158,9 +159,9 @@ if !exists("g:tex_pdf_map_keys") || g:tex_pdf_map_keys
     endif
     if !exists("g:tex_pdf_map_func_keys") || g:tex_pdf_map_func_keys
         noremap <buffer> <silent> <F9> <Esc>:BuildTexPdf<CR>
-        noremap <buffer> <silent> <S-F9> <Esc>:BuildAndViewTexPdf<CR>
+        noremap <buffer> <silent> <S-F9> <Esc>:ViewTexPdf<CR>
         inoremap <buffer> <silent> <F9> <Esc>:BuildTexPdf<CR>
-        inoremap <buffer> <silent> <S-F9> <Esc>:BuildAndViewTexPdf<CR>
+        inoremap <buffer> <silent> <S-F9> <Esc>:ViewTexPdf<CR>
     endif
 endif
 
@@ -274,20 +275,32 @@ endfunction
 function! <SID>ViewTexPdf(...)
     if a:0 == 0
         let l:target = expand("%:p:r") . ".pdf"
+        if !filereadable(l:target)
+            let l:pdfs = split(glob(expand("%:h") . "/*.pdf"), "\n")
+            if len(l:pdfs) == 0
+                echoerr "Failed to find a PDF file"
+                return
+            end
+            if len(l:pdfs) > 1
+                let l:target = input("What is the main PDF: ", l:pdfs[0], "file")
+            else
+				let l:target = l:pdfs[0]
+			end
+        end
     else
         let l:target = a:1
     endif
     " XXX Added evince here
-	call LatexEvinceSearch()
+    silent execute '!cd "%:h"; ' . s:sp . 'evince_vim_dbus.py EVINCE "' . l:target . '" ' . line('.') . ' "%:p"'
     if v:shell_error
         redraw!
-    else
-        " XXX Execute background watcher process
-        if ! exists("b:started_evince_handler")
-            silent execute '!sleep 0.5; cd "%:h"; ' . s:sp . 'evince_vim_dbus.py GVIM "' . v:servername .'" "%:t:r.pdf" "%:t" &'
-            let b:started_evince_handler = 1
-        endif
     endif
+
+	" XXX Execute background watcher process
+	if ! exists("b:started_evince_handler")
+		silent execute '!sleep 0.5; cd "%:h"; ' . s:sp .  'evince_vim_dbus.py GVIM "' . v:servername .'" "' . l:target . '" "' . target[:-4] . 'tex" &'
+		let b:started_evince_handler = 1
+	endif
 endfunction
 
 " 1}}}

@@ -133,7 +133,7 @@ class EvinceWindowProxy:
                 self._handler = self._syncview_handler
                 self._get_dbus_name(True)
         else:
-            self.window.SyncView(input_file, data, dbus_interface = "org.gnome.evince.Window")
+            self.window.SyncView(input_file, data, 0, dbus_interface = "org.gnome.evince.Window")
 
     def _syncview_handler(self, window_list):
         self.handle_get_window_list_reply(window_list)
@@ -171,8 +171,8 @@ The usage (to make gvim sync in response to evince clicks, keeps running till ki
   
         output_file = sys.argv[2]
         input_file  = sys.argv[4]
-        path_output  = os.getcwd() + '/' + output_file
-        path_input   = os.getcwd() + '/' + input_file
+        path_output  = os.path.abspath(output_file)
+        path_input   = os.path.abspath(input_file)
   
         if not os.path.isfile(path_output):
             print_usage()
@@ -192,13 +192,15 @@ The usage (to make gvim sync in response to evince clicks, keeps running till ki
         gvim_server_name = sys.argv[2]
         output_file = sys.argv[3]
         input_file  = sys.argv[4]
-        path_output  = os.getcwd() + '/' + output_file
-        path_input   = os.getcwd() + '/' + input_file
+        path_output  = os.path.abspath(output_file)
+        path_input   = os.path.abspath(input_file)
   
         if not os.path.isfile(path_input):
             print_usage()
 
         def source_view_handler(input_file, source_link):
+            if input_file[:7] == "file://":
+                input_file = input_file[7:]
             print 'gvim --servername "' + gvim_server_name + '" --remote +' + str(source_link[0]) + ' ' + input_file
             os.system('gvim --servername "' + gvim_server_name + '" --remote +' + str(source_link[0]) + ' ' + input_file)
   
