@@ -297,10 +297,8 @@ function! <SID>ViewTexPdf(...)
     endif
 
 	" XXX Execute background watcher process
-	if ! exists("b:started_evince_handler")
-		silent execute '!sleep 0.5; cd "%:h"; ' . s:sp .  'evince_vim_dbus.py GVIM "' . v:servername .'" "' . l:target . '" "' . target[:-4] . 'tex" &'
-		let b:started_evince_handler = 1
-	endif
+	silent execute '!sleep 0.5; cd "%:h"; pkill -f evince_vim_dbus.py; ' . s:sp .  'evince_vim_dbus.py GVIM "' . v:servername .'" "' . l:target . '" "' . target[:-4] . 'tex" &'
+	let b:started_evince_handler = 1
 endfunction
 
 " 1}}}
