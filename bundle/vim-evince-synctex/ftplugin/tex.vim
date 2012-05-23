@@ -290,6 +290,7 @@ function! <SID>ViewTexPdf(...)
     else
         let l:target = a:1
     endif
+
     " XXX Added evince here
     silent execute '!cd "%:h"; ' . s:sp . 'evince_vim_dbus.py EVINCE "' . l:target . '" ' . line('.') . ' "%:p"'
     if v:shell_error
@@ -297,8 +298,8 @@ function! <SID>ViewTexPdf(...)
     endif
 
 	" XXX Execute background watcher process
-	silent execute '!sleep 0.5; cd "%:h"; pkill -f evince_vim_dbus.py; ' . s:sp .  'evince_vim_dbus.py GVIM "' . v:servername .'" "' . l:target . '" "' . target[:-4] . 'tex" &'
-	let b:started_evince_handler = 1
+	silent execute '!pkill -f evince_vim_dbus.py; '
+	silent execute '!sleep 0.5; cd "%:h"; ' . s:sp .  'evince_vim_dbus.py GVIM "' . v:servername .'" "' . l:target . '" "' . target[:-4] . 'tex" &'
 endfunction
 
 " 1}}}
