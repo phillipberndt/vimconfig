@@ -70,7 +70,7 @@ snippet head "Letter" b
 \makeatother
 
 \setkomavar{fromname}{`cat ~/.vim/vim-personal | grep name | cut -d= -f2`}
-\setkomavar{fromaddress}{`cat ~/.vim/vim-personal | grep street | cut -d= -f2` \\\\ `cat ~/.vim/vim-personal | grep zip | cut -d= -f2` `cat ~/.vim/vim-personal | grep city | cut -d= -f2`}
+\setkomavar{fromaddress}{`cat ~/.vim/vim-personal | grep street | cut -d= -f2`\\\\ `cat ~/.vim/vim-personal | grep zip | cut -d= -f2` `cat ~/.vim/vim-personal | grep city | cut -d= -f2`}
 \setkomavar{fromphone}{`cat ~/.vim/vim-personal | grep phone | cut -d= -f2`}
 \renewcommand{\phonename}{Telefon}
 \setkomavar{fromemail}{mail@pberndt.com}
