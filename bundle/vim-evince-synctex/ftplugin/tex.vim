@@ -227,19 +227,30 @@ function! <SID>BuildTexPdf(view_results, ...)
         endtry
         silent make
     else
+		" Find the main TeX file
+		let l:pdfs = split(glob(expand("%:h") . "/*.pdf"), "\n")
+		if len(l:pdfs) == 1
+			let l:file = substitute(l:pdfs[0], ".pdf", ".tex", "")
+			if !filereadable(l:file)
+				let l:file = expand("%")
+			end
+		else
+			let l:file = expand("%")
+		end
+
         let l:special_tex_compiler = "rubber"
         if executable(l:special_tex_compiler)
             echon "compiling with Rubber ..."
-            silent execute "setlocal makeprg=" . l:special_tex_compiler . "\\ -dfsq\\ %"
+            silent execute "setlocal makeprg=" . l:special_tex_compiler . "\\ -dfsq"
             setlocal errorformat=%f:%l:\ %m
-            silent make %
+			silent execute "make " . l:file
         else
             echon "compiling ..."
             let b:tex_flavor = 'pdflatex'
             compiler tex
             setlocal makeprg=pdflatex\ \-file\-line\-error\ \-interaction=nonstopmode\ $*\\\|\ grep\ \-P\ ':\\d{1,5}:\ '
             setlocal errorformat=%f:%l:\ %m
-            silent make %
+			silent execute "make " . l:file
         endif
     endif
 
