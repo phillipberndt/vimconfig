@@ -1,0 +1,18 @@
+snippet fun "Function definition" !b
+function [ ${2:} ] = ${1:`!p snip.rv = snip.basename`}(${3:})
+	% `!p snip.rv = t[1].upper()` ${4:description}
+	% ${5:`!p
+if t[3]:
+	snip += "\t% ARGUMENTS:"
+	for x in t[3].split(","):
+		snip += "\t%  " + x.strip() + ": "
+if t[2]:
+	snip += "\t% RETURNS:"
+	for x in t[2].split(","):
+		snip += "\t%  " + x.strip() + ": "
+
+	`}
+
+	$0
+end
+endsnippet
