@@ -88,6 +88,8 @@ map <M-5> 5gt
 map <M-6> 6gt
 map <M-7> 7gt
 map <M-8> 8gt
+map Y "+y
+map P "+p
 
 map <C-e> :NERDTreeToggle<CR>
 
