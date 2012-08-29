@@ -2,7 +2,8 @@ clearsnippets r
 
 # Opening
 snippet head "Article" b
-\documentclass[a4paper,10pt]{scrartcl}
+\documentclass[a4paper,11pt]{amsart}
+\synctex=1
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
@@ -10,23 +11,76 @@ snippet head "Article" b
 \usepackage[ngerman]{babel}
 \usepackage{geometry}
 \geometry{a4paper,left=2.0cm, right=2.0cm, includeheadfoot, top=1.5cm,bottom=2.0cm}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{pgffor}
+\usepackage{nicefrac}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{tabularx}
+\usepackage{inconsolata}
+\usepackage{pdflscape}
+\usepackage{microtype}
+\usepackage{breakurl}
+\usepackage[htt]{hyphenat}
+\usepackage{subfig}
+\captionsetup[subfigure]{indention=8pt, singlelinecheck=true}
+\lstset{ language=bash, basicstyle=\footnotesize\ttfamily, numbers=left, numberstyle=\footnotesize\ttfamily, 
+ numbersep=5pt, rulecolor=\color{black}, tabsize=2, captionpos=b, breaklines=true, columns=fullflexible,
+}
+\usepackage{natbib}
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\todo}[1]{\marginpar{\smaller \textcolor{red}{#1}} }
 
-\newtheorem{thm}{Satz}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\lin}{lin}
-\DeclareMathOperator{\ran}{ran}
-\newcommand{\spd}[2]{\left\langle#1, #2\right\rangle}
-\DeclareMathOperator{\C}{\mathbb{C}}
-\DeclareMathOperator{\R}{\mathbb{R}}
-\DeclareMathOperator{\N}{\mathbb{N}}
+\usepackage[
+	pdftitle={${1:Title}},
+	pdfauthor={`cat ~/.vim/vim-personal | grep name | cut -d= -f2`},
+	colorlinks=true,
+	linkcolor=black,
+	citecolor=black,
+	filecolor=black,
+	urlcolor=black
+]{hyperref}
+
+\newcommand{\e}{\mathrm{e}}
+\renewcommand{\d}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+\newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\rd}{\mathrm d}
+\newcommand{\R}{\mathbb R}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\sfrac}{\nicefrac}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}
+\theoremstyle{remark}
+\newtheorem*{rmk}{Remark}
+\newtheorem{example}{Example}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{section}{section}
+\numberwithin{table}{section}
+
+\newcommand{\notocchapter}[1]{
+	\addtocontents{toc}{\setcounter{tocdepth}{-1}}
+	\chapter*{#1}
+	\addtocontents{toc}{\setcounter{tocdepth}{1}}
+}
 
 \begin{document}
-\title{${1}}
-\subject{${2}}
+\title{$1}
+\author{`cat ~/.vim/vim-personal | grep name | cut -d= -f2`}
 \date{}
 \maketitle
-${3}
+
+$0
 \end{document}
 endsnippet
 
