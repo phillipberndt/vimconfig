@@ -124,7 +124,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/A-my-own-stuff/UltiSnips/"
-map <C-e><C-e> :UltiSnipsEdit<CR>
+map <C-s><C-e> :UltiSnipsEdit<CR>
 inoremap <silent> <c-tab> <C-R>=UltiSnips_JumpForwards()<cr>
 snoremap <silent> <c-tab> <Esc>:call UltiSnips_JumpForwards()<cr>
 
