@@ -9,7 +9,7 @@
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/UltiSnips"]
 	path = bundle/UltiSnips
-	url = git://github.com/rygwdn/ultisnips.git
+	url = git://github.com/SirVer/ultisnips.git
 [submodule "bundle/vim-skeleton"]
 	path = bundle/vim-skeleton
 	url = https://github.com/kana/vim-skeleton
