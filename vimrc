@@ -47,7 +47,7 @@ set iskeyword=@,-,\:,48-57,_,128-167,224-235 " Allow more for completion
 set guifont=Inconsolata\ 11 " A nicer GUI font
 
 " Encodings
-set fileencodings=utf-8,iso-8859-1,iso-8859-15
+set fileencodings=ucs-bom,utf-8,iso-8859-1,iso-8859-15
 set termencoding=utf-8
 
 " Some vim stuff
