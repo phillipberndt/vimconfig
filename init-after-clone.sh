@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 git submodule init
 git submodule update
@@ -12,6 +12,7 @@ find bundle -name .gitmodules -printf "%h\n" | while read DIR; do
 		fi
 	)
 done
+git submodule foreach --recursive git checkout master
 
 python update-scripts.py
 if ! -e vim-personal; then
