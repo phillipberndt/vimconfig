@@ -3,6 +3,16 @@
 git submodule init
 git submodule update
 git submodule foreach git checkout master
+find bundle -name .gitmodules -printf "%h\n" | while read DIR; do
+	(
+		cd $DIR
+		if [ -f .gitmodules ]; then
+			git submodule init
+			git submodule update
+		fi
+	)
+done
+
 python update-scripts.py
 if ! -e vim-personal; then
 	echo "Enter your personal data:"
