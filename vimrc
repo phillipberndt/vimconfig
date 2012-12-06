@@ -143,4 +143,6 @@ autocmd BufNewFile,BufRead *itsalltext/*wiki*	setf Wikipedia
 autocmd BufNewFile,BufRead *.module set filetype=php.drupal
 autocmd BufNewFile,BufRead *.install set filetype=php.drupal
 autocmd BufNewFile,BufRead *.tex set filetype=tex
+autocmd BufNewFile,BufRead SConstruct set filetype=python
+autocmd BufNewFile,BufRead SConscript set filetype=python
 augroup END
