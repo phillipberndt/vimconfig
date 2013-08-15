@@ -90,6 +90,8 @@ map <M-7> 7gt
 map <M-8> 8gt
 map Y "+y
 map P "+p
+vnoremap < <gv
+vnoremap > >gv
 
 map <C-e> :NERDTreeToggle<CR>
 map <C-b> ,be
