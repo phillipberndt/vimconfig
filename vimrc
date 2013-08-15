@@ -7,6 +7,10 @@ version 7.0
 filetype off
 call pathogen#infect()
 
+" Define highlighting group for extra whitespace
+highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+
 " Some general settings
 filetype on						" Use filetype detection
 filetype plugin on
@@ -45,6 +49,9 @@ set foldlevel=100
 set iskeyword=@,-,\:,48-57,_,128-167,224-235 " Allow more for completion
 "set guifont=DejaVu\ Sans\ Mono\ 9 " A nicer GUI font
 set guifont=Inconsolata\ 11 " A nicer GUI font
+
+" Highlight extra whitespace
+autocmd Syntax * syn match ExtraWhitespace /\s\+\%#\@<!$\| \+\ze\t/ containedin=ALL
 
 " Encodings
 set fileencodings=ucs-bom,utf-8,iso-8859-1,iso-8859-15
