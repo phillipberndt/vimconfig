@@ -129,14 +129,26 @@ let Tlist_Use_Right_Window = 1
 " Spell features
 set spelllang=de
 
-" I want Ultisnips to move through the expansions with tab
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" Ultisnips configuration
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/A-my-own-stuff/UltiSnips/"
 map <C-s><C-e> :UltiSnipsEdit<CR>
 inoremap <silent> <c-tab> <C-R>=UltiSnips_JumpForwards()<cr>
 snoremap <silent> <c-tab> <Esc>:call UltiSnips_JumpForwards()<cr>
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" Jedi (python completion)
+let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#popup_on_dot = 0
+autocmd FileType python setlocal completeopt-=preview
+
+" clang completion
+let g:clang_complete_auto = 0
+let g:clang_hl_errors = 1
+let g:clang_snippets = 1
+let g:clang_snippets_engine = "ultisnips"
+let g:clang_library_path = "/usr/local/lib"
 
 " Jump Back to last known cursor position
 autocmd BufReadPost *
