@@ -11,7 +11,7 @@ for root, dirs, files in os.walk("."):
 		os.system("bzr up")
 	if ".git" in dirs:
 		print "\033[1mUpdating", root, "with git\033[0m"
-		os.system("git pull")
+		os.system("git pull origin master")
 	elif "source" in files:
 		# Source file syntax:
 		# Three lines. The first line determines a mode: search or download.
