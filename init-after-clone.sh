@@ -44,3 +44,7 @@ if ! vim --version | grep -q "+python"; then
 	done
 	cd ..
 fi
+
+find bundle -name doc | xargs -n 1 echo "helptags " > tags.vim
+vim -c "source tags.vim" -c "quit"
+rm -f tags.vim

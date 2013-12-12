@@ -11,7 +11,7 @@ for root, dirs, files in os.walk("."):
 		os.system("bzr up")
 	if ".git" in dirs:
 		print "\033[1mUpdating", root, "with git\033[0m"
-		os.system("git pull origin master")
+		os.system("git pull origin master && (test -e .gitmodules && git submodule update --init)")
 	elif "source" in files:
 		# Source file syntax:
 		# Three lines. The first line determines a mode: search or download.
@@ -51,3 +51,5 @@ for root, dirs, files in os.walk("."):
 				os.makedirs(directory)
 			urllib.urlretrieve(url, pattern)
 	os.chdir(working_directory)
+	if os.access(root + "-after-update", os.X_OK):
+		os.system("./" + root + "-after-update")
