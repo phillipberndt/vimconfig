@@ -132,8 +132,8 @@ set spelllang=de
 " Ultisnips configuration
 let g:UltiSnipsSnippetsDir="~/.vim/bundle/A-my-own-stuff/UltiSnips/"
 map <C-s><C-e> :UltiSnipsEdit<CR>
-inoremap <silent> <c-tab> <C-R>=UltiSnips_JumpForwards()<cr>
-snoremap <silent> <c-tab> <Esc>:call UltiSnips_JumpForwards()<cr>
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
