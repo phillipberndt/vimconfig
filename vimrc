@@ -13,7 +13,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgre
 
 " Some general settings
 filetype on						" Use filetype detection
-filetype plugin on
+filetype plugin indent on
 syntax on						" Use syntax highlighting
 set ignorecase					" Ignore case in searches
 set nocompatible				" Disable vi compatible mode

@@ -1,0 +1,4 @@
+search
+http://www.vim.org/scripts/script.php?script_id=974
+download_script.php\?src_id=[0-9]+
+indent/python.vim
