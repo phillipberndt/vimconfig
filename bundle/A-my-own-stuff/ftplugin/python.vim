@@ -10,3 +10,20 @@ setlocal shiftwidth=4
 " setlocal textwidth=79
 setlocal expandtab
 setlocal nosmarttab
+
+" Open modules
+" (from local venv)
+if !exists('s:scriptpath')
+	let s:scriptpath = expand('<sfile>:p:h') . '/python_modulename.py'
+	function! <SID>PythonOpenModule()
+		let l:moduleline = getline(".")
+		let l:path = system(s:scriptpath . ' ' . shellescape(l:moduleline))
+
+		if l:path == ''
+			echoerr 'Import `' . l:moduleline . ''' not found'
+		else
+			execute ':tabe ' . l:path
+		endif
+	endfunction
+endif
+nmap <Leader>oo :call <SID>PythonOpenModule()<CR>
