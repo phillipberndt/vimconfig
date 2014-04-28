@@ -229,18 +229,20 @@ function! <SID>BuildTexPdf(view_results, ...)
     else
 		" Find the main TeX file
 		let l:pdfs = split(glob(expand("%:h") . "/*.pdf"), "\n")
-		if len(l:pdfs) == 1
+		let l:file = ""
+		for l:cand in l:pdfs
 			let l:file = substitute(l:pdfs[0], ".pdf", ".tex", "")
-			if !filereadable(l:file)
-				let l:file = expand("%")
+			if filereadable(l:file)
+				break
 			end
-		else
+		endfor
+		if !filereadable(l:file)
 			let l:file = expand("%")
 		end
 
         let l:special_tex_compiler = "rubber"
         if executable(l:special_tex_compiler)
-            echon "compiling with Rubber ..."
+            echon "compiling " . l:file . " with Rubber ..."
             silent execute "setlocal makeprg=" . l:special_tex_compiler . "\\ -dfsq"
             setlocal errorformat=%f:%l:\ %m
 			silent execute "make " . l:file
