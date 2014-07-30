@@ -4,14 +4,17 @@ import urllib
 import re
 import urlparse
 working_directory = os.getcwd()
-for root, dirs, files in os.walk("."):
+for root, dirs, files in os.walk("bundle"):
 	os.chdir(root)
 	if ".bzr" in dirs:
 		print "\033[1mUpdating", root, "with bzr\033[0m"
 		os.system("bzr up")
-	if ".git" in dirs:
+	elif ".git" in dirs:
 		print "\033[1mUpdating", root, "with git\033[0m"
-		os.system("git pull origin master && (test -e .gitmodules && git submodule update --init)")
+		os.system("git fetch origin && git reset --hard origin/master && (test -e .gitmodules && git submodule update --init)")
+	elif ".svn" in dirs:
+		print "\033[1mUpdating", root, "with subversion\033[0m"
+		os.system("svn up")
 	elif "source" in files:
 		# Source file syntax:
 		# Three lines. The first line determines a mode: search or download.

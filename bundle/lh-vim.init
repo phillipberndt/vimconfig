@@ -1,0 +1,2 @@
+#!/bin/sh
+svn co http://lh-vim.googlecode.com/svn/vim-lib/trunk lh-vim

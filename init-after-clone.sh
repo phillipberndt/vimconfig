@@ -15,6 +15,13 @@ done
 git submodule foreach --recursive git checkout master
 
 python update-scripts.py
+
+cd bundle
+for SCRIPT in *.init; do
+	./$SCRIPT || exit 1
+done
+cd ..
+
 if ! -e vim-personal; then
 	echo "Enter your personal data:"
 	for FIELD in $(cut -d= -f1 vim-personal.template); do
