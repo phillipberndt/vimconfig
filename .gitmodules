@@ -40,9 +40,9 @@
 [submodule "bundle/SuperTab"]
 	path = bundle/SuperTab
 	url = https://github.com/ervandew/supertab
-[submodule "bundle/local_vimrc"]
-	path = bundle/local_vimrc
-	url = https://github.com/LucHermitte/local_vimrc
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets
+[submodule "bundle/local_vimrc"]
+	path = bundle/local_vimrc
+	url = https://github.com/LucHermitte/local_vimrc
