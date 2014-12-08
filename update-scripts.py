@@ -9,7 +9,7 @@ for root, dirs, files in os.walk("bundle"):
 	if ".bzr" in dirs:
 		print "\033[1mUpdating", root, "with bzr\033[0m"
 		os.system("bzr up")
-	elif ".git" in dirs:
+	elif ".git" in dirs or ".git" in files:
 		print "\033[1mUpdating", root, "with git\033[0m"
 		os.system("git fetch origin && git reset --hard origin/master && (test -e .gitmodules && git submodule update --init)")
 	elif ".svn" in dirs:

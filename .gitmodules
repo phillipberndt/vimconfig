@@ -46,3 +46,6 @@
 [submodule "bundle/local_vimrc"]
 	path = bundle/local_vimrc
 	url = https://github.com/LucHermitte/local_vimrc
+[submodule "bundle/julia-vim"]
+	path = bundle/julia-vim
+	url = git://github.com/JuliaLang/julia-vim.git

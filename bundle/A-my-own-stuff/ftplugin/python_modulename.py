@@ -29,6 +29,7 @@ def find_module(module, paths=None):
 arg = sys.argv[1]
 
 lib = re.search("(?i)from\s+(\S+)\s+import\s+([^, \t]+)", arg)
+file = None
 if lib:
 	imp = lib.group(1) + "." + lib.group(2)
 	file = find_module(imp)
@@ -36,7 +37,7 @@ if lib:
 		imp = lib.group(1)
 		file = find_module(imp)
 else:
-	lib = re.search("(?i)import\s+(\S+)")
+	lib = re.search("(?i)import\s+(\S+)", arg)
 	if lib:
 		imp = lib.group(1)
 		file = find_module(imp)
