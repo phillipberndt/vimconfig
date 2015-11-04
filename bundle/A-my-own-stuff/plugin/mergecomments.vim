@@ -1,4 +1,4 @@
-"" Highlight merge failure comments on leader+m
+"" Highlight merge failure comments on leader+c
 
 let b:mergeCommentMatchState = 0
 function! <SID>HighlightMergeComments()
@@ -12,4 +12,4 @@ function! <SID>HighlightMergeComments()
 		let b:mergeCommentMatchState = 0
 	endif
 endfunction
-nmap <leader>m :call <SID>HighlightMergeComments()<cr>
+nmap <leader>c :call <SID>HighlightMergeComments()<cr>
