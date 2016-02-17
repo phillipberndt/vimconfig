@@ -82,6 +82,8 @@ class EvinceWindowProxy:
             self._log.debug("FindDocument DBus call has failed")
 
     def handle_find_document_reply(self, evince_name):
+        if self._log:
+            self._log.debug("FindDocument DBus call has suceeded")
         if self._handler is not None:
             handler = self._handler
         else:
@@ -123,6 +125,7 @@ class EvinceWindowProxy:
             self.close_handler()
 
     def on_sync_source(self, input_file, source_link, other):
+        print "on sync source"
         if self.source_handler is not None:
             self.source_handler(input_file, source_link)
 
@@ -205,7 +208,8 @@ The usage (to make gvim sync in response to evince clicks, keeps running till ki
             os.system('gvim --servername "' + gvim_server_name + '" --remote +' + str(source_link[0]) + ' ' + input_file)
   
         dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
-        a = EvinceWindowProxy('file://' + path_output, True )
+        import logging
+        a = EvinceWindowProxy('file://' + path_output, True, logging.getLogger("") )
     
         a.set_source_handler(source_view_handler)
         loop = gobject.MainLoop()
