@@ -111,6 +111,10 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" Save localvimrc decisions and use neater filename
+let g:localvimrc_persistent=2
+let g:localvimrc_name = ["lvimrc"]
+
 " List mode: Highlight whitespace
 set listchars=tab:>-,eol:¶
 nmap <leader>l	:set list!<CR>

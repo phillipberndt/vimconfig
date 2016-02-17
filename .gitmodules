@@ -46,3 +46,6 @@
 [submodule "bundle/julia-vim"]
 	path = bundle/julia-vim
 	url = git://github.com/JuliaLang/julia-vim.git
+[submodule "bundle/vim-localvimrc"]
+	path = bundle/vim-localvimrc
+	url = https://github.com/embear/vim-localvimrc
