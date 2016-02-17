@@ -108,9 +108,6 @@ map <C-b> ,be
 let mapleader = ","
 let g:mapleader = ","
 
-" Local vimrc filename
-let g:local_vimrc = "vimrc"
-
 " Fast saving
 nmap <leader>w :w!<cr>
 
