@@ -150,6 +150,7 @@ let g:clang_hl_errors = 1
 let g:clang_snippets = 1
 let g:clang_snippets_engine = "ultisnips"
 let g:clang_library_path = "/usr/local/lib"
+let g:clang_close_preview = 1
 
 " Jump Back to last known cursor position
 autocmd BufReadPost *
