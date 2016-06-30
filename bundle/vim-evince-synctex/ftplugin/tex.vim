@@ -231,7 +231,8 @@ function! <SID>BuildTexPdf(view_results, ...)
 		let l:pdfs = split(glob(expand("%:h") . "/*.pdf"), "\n")
 		let l:file = ""
 		for l:cand in l:pdfs
-			let l:file = substitute(l:pdfs[0], ".pdf", ".tex", "")
+			" XXX
+			let l:file = substitute(l:cand, ".pdf", ".tex", "")
 			if filereadable(l:file)
 				break
 			end
@@ -294,6 +295,19 @@ function! <SID>ViewTexPdf(...)
                 echoerr "Failed to find a PDF file"
                 return
             end
+
+            " XXX
+            if len(l:pdfs) > 1
+                " Find the main TeX file
+                for l:cand in l:pdfs
+                    let l:file = substitute(l:cand, ".pdf", ".tex", "")
+                    if filereadable(l:file)
+                        let l:pdfs = [ l:cand ]
+                        break
+                    end
+                endfor
+            end
+
             if len(l:pdfs) > 1
                 let l:target = input("What is the main PDF: ", l:pdfs[0], "file")
             else
