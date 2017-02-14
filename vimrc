@@ -145,6 +145,10 @@ let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#popup_on_dot = 0
 autocmd FileType python setlocal completeopt-=preview
 
+if has('python')
+	let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
+
 " clang completion
 let g:clang_complete_auto = 0
 let g:clang_hl_errors = 1
