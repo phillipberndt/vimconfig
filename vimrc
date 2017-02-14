@@ -49,6 +49,7 @@ set foldlevel=100
 set iskeyword=@,-,\:,48-57,_,128-167,224-235 " Allow more for completion
 "set guifont=DejaVu\ Sans\ Mono\ 9 " A nicer GUI font
 set guifont=Inconsolata\ 11 " A nicer GUI font
+set ffs=unix,dos,mac
 
 " Highlight extra whitespace
 autocmd Syntax * syn match ExtraWhitespace /\s\+\%#\@<!$\| \+\ze\t/ containedin=ALL
