@@ -58,3 +58,9 @@
 [submodule "bundle/lh-vim-lib"]
 	path = bundle/lh-vim-lib
 	url = https://github.com/LucHermitte/lh-vim-lib
+[submodule "bundle/vim-easymotion"]
+	path = bundle/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion
+[submodule "bundle/vim-multiple-cursors"]
+	path = bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors
