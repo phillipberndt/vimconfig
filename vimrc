@@ -141,7 +141,6 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:SuperTabDefaultCompletionType = "context"
 
 " Jedi (python completion)
-let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#popup_on_dot = 0
 autocmd FileType python setlocal completeopt-=preview
 
