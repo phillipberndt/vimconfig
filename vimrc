@@ -29,8 +29,9 @@ set number						" Line numbers
 set lz							" Lazy redraw
 set hid							" Change buffer without saving
 set noerrorbells				" No noise
+set t_vb=                       " Enable visual bell, but disable output. Only way to really disable bells.
+set vb
 set nohlsearch					" Do not highlight searches
-set novisualbell				" no bells
 set noerrorbells				" no blink
 set laststatus=2				" Show status line
 set fo=tcrqn					" See Help (complex)
