@@ -31,7 +31,7 @@ set hid							" Change buffer without saving
 set noerrorbells				" No noise
 set t_vb=                       " Enable visual bell, but disable output. Only way to really disable bells.
 set vb
-set nohlsearch					" Do not highlight searches
+set hlsearch					" Do highlight searches
 set noerrorbells				" no blink
 set laststatus=2				" Show status line
 set fo=tcrqn					" See Help (complex)
@@ -51,6 +51,7 @@ set iskeyword=@,-,\:,48-57,_,128-167,224-235 " Allow more for completion
 "set guifont=DejaVu\ Sans\ Mono\ 9 " A nicer GUI font
 set guifont=Inconsolata\ 11 " A nicer GUI font
 set ffs=unix,dos,mac
+set cm=blowfish2                " Use non-crap encryption
 
 " Highlight extra whitespace
 autocmd Syntax * syn match ExtraWhitespace /\s\+\%#\@<!$\| \+\ze\t/ containedin=ALL
@@ -128,6 +129,7 @@ nnoremap <silent> <F7> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=
 nnoremap <silent> <F9> :TlistSync<CR>
 nnoremap <silent> <F8> :Tlist<CR>
 let Tlist_Use_Right_Window = 1
+set tags=./tags;,tags; " Search for tags file in every dir up towards root
 
 " Spell features
 set spelllang=de
@@ -148,6 +150,7 @@ autocmd FileType python setlocal completeopt-=preview
 if has('python')
 	let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
+nnoremap <leader>. :CtrlPTag<cr>
 
 " clang completion
 let g:clang_complete_auto = 0
