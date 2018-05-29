@@ -6,6 +6,9 @@ version 7.0
 " Use Pathogen. It's critical to call this before enabling filetype detection
 filetype off
 call pathogen#infect()
+if v:version >= 801
+	packadd termdebug
+endif
 
 " Define highlighting group for extra whitespace
 highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
@@ -17,6 +20,7 @@ filetype plugin indent on
 syntax on						" Use syntax highlighting
 set ignorecase					" Ignore case in searches
 set nocompatible				" Disable vi compatible mode
+set backspace=indent,eol,start  " Make backspace work as in other programs
 set history=1000				" Use 1000 lines of history
 set clipboard+=unnamed			" Add unnamed clipboard for yanking (see :help clipboard)
 set grepprg=grep\ -nHi\ $*		" Grep program
