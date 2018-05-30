@@ -67,3 +67,9 @@
 [submodule "bundle/vim-fontsize"]
 	path = bundle/vim-fontsize
 	url = https://github.com/drmikehenry/vim-fontsize
+[submodule "bundle/vim-clang-format"]
+	path = bundle/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format
+[submodule "bundle/vim-operator-user"]
+	path = bundle/vim-operator-user
+	url = https://github.com/kana/vim-operator-user
